@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venini59 srl — Milano [Glitch Mouse]</title>
+    <meta name="description" content="Commercio internazionale di prodotti alimentari, spazi di lavoro e progetti creativi." />
+    <meta name="author" content="Venini59 srl" />
+    <meta name="theme-color" content="#0E0E11" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 16px;
+        line-height: 1.6;
+        background-color: #0E0E11;
+        color: #E6E6E6;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 56rem;
+      }
+
+      .card {
+        background-color: #121318;
+        border: 1px solid #23252D;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.15) 0px,
+          transparent 1px,
+          transparent 2px,
+          rgba(0, 0, 0, 0.15) 3px
+        );
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.3;
+        border-radius: 0.75rem;
+      }
+
+      .card-content {
+        position: relative;
+        z-index: 10;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #23252D;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      h1 {
+        color: #E6E6E6;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.05s, text-shadow 0.05s;
+      }
+
+      main {
+        margin-bottom: 2rem;
+      }
+
+      .command-block {
+        margin-bottom: 1.5rem;
+      }
+
+      .prompt {
+        color: #00FF88;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        transition: color 0.05s, text-shadow 0.05s;
+      }
+
+      .output {
+        padding-left: 1rem;
+      }
+
+      .output p {
+        margin-bottom: 0.25rem;
+        transition: color 0.05s;
+      }
+
+      .tree {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.875rem;
+        padding-left: 1rem;
+      }
+
+      .tree div {
+        margin-bottom: 0.125rem;
+        transition: color 0.05s;
+      }
+
+      .links-container {
+        padding-left: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      a {
+        color: #00FF88;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 4px;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 0.5rem;
+        height: 1rem;
+        background-color: #00FF88;
+        animation: blink 1s infinite;
+        transition: background-color 0.05s;
+      }
+
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+
+      .note {
+        padding-top: 1rem;
+        margin-top: 1.5rem;
+        border-top: 1px solid #23252D;
+      }
+
+      .note p {
+        color: #9AA0A6;
+        font-size: 0.875rem;
+      }
+
+      footer {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #23252D;
+        font-size: 0.875rem;
+        color: #9AA0A6;
+      }
+
+      footer div {
+        margin-bottom: 0.25rem;
+      }
+
+      /* Glitch amber colors */
+      .glitch-amber {
+        color: #FFB000 !important;
+        text-shadow: 0 0 8px rgba(255, 176, 0, 0.5) !important;
+      }
+
+      .glitch-amber-prompt {
+        color: #FFA040 !important;
+        text-shadow: 0 0 6px rgba(255, 160, 64, 0.4) !important;
+      }
+
+      .glitch-amber-cursor {
+        background-color: #FFA040 !important;
+      }
+
+      @media (max-width: 768px) {
+        .card {
+          padding: 1.5rem;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        h1 {
+          margin-bottom: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-content">
+          <header>
+            <h1 class="glitchable">VENINI59 srl — Milano</h1>
+          </header>
+
+          <main>
+            <div class="command-block">
+              <div class="prompt glitchable">$ whoami</div>
+              <div class="output">
+                <p class="glitchable">Venini59 srl — Milano. Commercio internazionale & progetti creativi.</p>
+                <p class="glitchable">Focus: filiere alimentari di qualità, spazi di lavoro e progetti creativi.</p>
+              </div>
+            </div>
+
+            <div class="command-block">
+              <div class="prompt glitchable">$ tree</div>
+              <div class="tree">
+                <div class="glitchable">.</div>
+                <div class="glitchable">└── export/ Italian food · B2B</div>
+                <div class="glitchable">└── workspace/ Wee Space — coworking</div>
+                <div class="glitchable">└── publishing/ progetti creativi (libri da colorare, oggetti illustrati)</div>
+              </div>
+            </div>
+
+            <div class="command-block">
+              <div class="prompt glitchable">$ open</div>
+              <div class="links-container">
+                <a href="#export" class="glitchable">export/</a>
+                <a href="https://weespace.venini59.com" target="_blank" rel="noopener noreferrer" class="glitchable">workspace/</a>
+                <a href="#publishing" class="glitchable">publishing/</a>
+                <span class="cursor glitchable-cursor"></span>
+              </div>
+            </div>
+
+            <div class="note">
+              <p>
+                Nota: questa è la nostra vetrina digitale. Per richieste B2B:
+                <a href="mailto:hello@venini59.com">hello@venini59.com</a>.
+              </p>
+            </div>
+          </main>
+
+          <footer>
+            <div>
+              Venini59 srl · Piazza A. Gramsci 2, 20154 Milano (MI) · P.IVA 10979860961
+            </div>
+            <div>
+              Contatti:
+              <a href="mailto:hello@venini59.com">hello@venini59.com</a>
+              ·
+              <a href="privacy.html">Privacy</a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Glitch che segue il mouse
+      const glitchables = document.querySelectorAll('.glitchable');
+      const glitchableCursors = document.querySelectorAll('.glitchable-cursor');
+      
+      let mouseX = 0;
+      let mouseY = 0;
+      let lastGlitchTime = 0;
+      const glitchCooldown = 100; // ms tra un glitch e l'altro
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        const now = Date.now();
+        if (now - lastGlitchTime < glitchCooldown) return;
+        lastGlitchTime = now;
+        
+        // Trova gli elementi vicini al mouse
+        glitchables.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          const elementCenterX = rect.left + rect.width / 2;
+          const elementCenterY = rect.top + rect.height / 2;
+          
+          // Calcola distanza dal mouse
+          const distance = Math.sqrt(
+            Math.pow(mouseX - elementCenterX, 2) + 
+            Math.pow(mouseY - elementCenterY, 2)
+          );
+          
+          // Se il mouse è vicino (entro 150px), applica glitch con probabilità
+          if (distance < 150 && Math.random() > 0.7) {
+            const isPrompt = element.classList.contains('prompt');
+            const glitchClass = isPrompt ? 'glitch-amber-prompt' : 'glitch-amber';
+            
+            element.classList.add(glitchClass);
+            
+            // Rimuovi dopo 50-100ms
+            const duration = 50 + Math.random() * 50;
+            setTimeout(() => {
+              element.classList.remove(glitchClass);
+            }, duration);
+          }
+        });
+        
+        // Glitch cursor se mouse vicino
+        glitchableCursors.forEach(cursor => {
+          const rect = cursor.getBoundingClientRect();
+          const cursorCenterX = rect.left + rect.width / 2;
+          const cursorCenterY = rect.top + rect.height / 2;
+          
+          const distance = Math.sqrt(
+            Math.pow(mouseX - cursorCenterX, 2) + 
+            Math.pow(mouseY - cursorCenterY, 2)
+          );
+          
+          if (distance < 150 && Math.random() > 0.8) {
+            cursor.classList.add('glitch-amber-cursor');
+            setTimeout(() => {
+              cursor.classList.remove('glitch-amber-cursor');
+            }, 80);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

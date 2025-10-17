@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venini59 srl — Milano [Phosphor Blue]</title>
+    <meta name="description" content="Commercio internazionale di prodotti alimentari, spazi di lavoro e progetti creativi." />
+    <meta name="author" content="Venini59 srl" />
+    <meta name="theme-color" content="#0A0E14" />
+
+    <meta property="og:title" content="Venini59 srl — Milano" />
+    <meta property="og:description" content="Commercio internazionale di prodotti alimentari, spazi di lavoro e progetti creativi." />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 16px;
+        line-height: 1.6;
+        background-color: #0A0E14;
+        color: #00D9FF;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 56rem;
+      }
+
+      .card {
+        background-color: #0F1419;
+        border: 1px solid #1A2530;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 217, 255, 0.1), 0 0 40px rgba(0, 217, 255, 0.05);
+        position: relative;
+      }
+
+      /* CRT Effect - Enhanced with vertical lines */
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.15) 0px,
+            transparent 1px,
+            transparent 2px,
+            rgba(0, 0, 0, 0.15) 3px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            rgba(0, 217, 255, 0.03) 0px,
+            transparent 1px,
+            transparent 2px,
+            rgba(0, 217, 255, 0.03) 3px
+          );
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.4;
+        border-radius: 0.75rem;
+      }
+
+      .card-content {
+        position: relative;
+        z-index: 10;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #1A2530;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      h1 {
+        color: #00D9FF;
+        font-weight: 600;
+        font-size: 1rem;
+        text-shadow: 
+          0 0 10px rgba(0, 217, 255, 0.8),
+          0 0 20px rgba(0, 217, 255, 0.4),
+          0 0 30px rgba(0, 217, 255, 0.2);
+      }
+
+      main {
+        margin-bottom: 2rem;
+      }
+
+      .command-block {
+        margin-bottom: 1.5rem;
+      }
+
+      .prompt {
+        color: #00FFFF;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-shadow: 
+          0 0 8px rgba(0, 255, 255, 0.6),
+          0 0 15px rgba(0, 255, 255, 0.3);
+      }
+
+      .output {
+        padding-left: 1rem;
+      }
+
+      .output p {
+        margin-bottom: 0.25rem;
+        text-shadow: 
+          0 0 6px rgba(0, 217, 255, 0.5),
+          0 0 12px rgba(0, 217, 255, 0.2);
+      }
+
+      .tree {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.875rem;
+        padding-left: 1rem;
+      }
+
+      .tree div {
+        margin-bottom: 0.125rem;
+        text-shadow: 
+          0 0 6px rgba(0, 217, 255, 0.5),
+          0 0 12px rgba(0, 217, 255, 0.2);
+      }
+
+      .links-container {
+        padding-left: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      a {
+        color: #00FFFF;
+        text-decoration: none;
+        transition: all 0.2s;
+        text-shadow: 
+          0 0 8px rgba(0, 255, 255, 0.6),
+          0 0 15px rgba(0, 255, 255, 0.3);
+      }
+
+      a:hover {
+        color: #66FFFF;
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 4px;
+        text-shadow: 
+          0 0 12px rgba(102, 255, 255, 0.8),
+          0 0 24px rgba(102, 255, 255, 0.4),
+          0 0 36px rgba(102, 255, 255, 0.2);
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 0.5rem;
+        height: 1rem;
+        background-color: #00FFFF;
+        animation: blink 0.8s infinite;
+        box-shadow: 
+          0 0 10px rgba(0, 255, 255, 0.8),
+          0 0 20px rgba(0, 255, 255, 0.4);
+      }
+
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+
+      .note {
+        padding-top: 1rem;
+        margin-top: 1.5rem;
+        border-top: 1px solid #1A2530;
+      }
+
+      .note p {
+        color: #6B9DB8;
+        font-size: 0.875rem;
+      }
+
+      footer {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #1A2530;
+        font-size: 0.875rem;
+        color: #6B9DB8;
+      }
+
+      footer div {
+        margin-bottom: 0.25rem;
+      }
+
+      @media (max-width: 768px) {
+        .card {
+          padding: 1.5rem;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        h1 {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .cursor {
+          animation: none;
+          opacity: 1;
+        }
+        
+        * {
+          text-shadow: none !important;
+        }
+        
+        .card::before {
+          opacity: 0.2;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-content">
+          <!-- Header -->
+          <header>
+            <h1>VENINI59 srl — Milano</h1>
+          </header>
+
+          <!-- Main terminal -->
+          <main>
+            <!-- whoami command -->
+            <div class="command-block">
+              <div class="prompt">$ whoami</div>
+              <div class="output">
+                <p>Venini59 srl — Milano. Commercio internazionale & progetti creativi.</p>
+                <p>Focus: filiere alimentari di qualità, spazi di lavoro e progetti creativi.</p>
+              </div>
+            </div>
+
+            <!-- tree command -->
+            <div class="command-block">
+              <div class="prompt">$ tree</div>
+              <div class="tree">
+                <div>.</div>
+                <div>└── export/ Italian food · B2B</div>
+                <div>└── workspace/ Wee Space — coworking</div>
+                <div>└── publishing/ progetti creativi (libri da colorare, oggetti illustrati)</div>
+              </div>
+            </div>
+
+            <!-- open command -->
+            <div class="command-block">
+              <div class="prompt">$ open</div>
+              <div class="links-container">
+                <a href="#export">export/</a>
+                <a href="https://weespace.venini59.com" target="_blank" rel="noopener noreferrer">workspace/</a>
+                <a href="#publishing">publishing/</a>
+                <span class="cursor"></span>
+              </div>
+            </div>
+
+            <!-- Nota -->
+            <div class="note">
+              <p>
+                Nota: questa è la nostra vetrina digitale. Per richieste B2B:
+                <a href="mailto:hello@venini59.com">hello@venini59.com</a>.
+              </p>
+            </div>
+          </main>
+
+          <!-- Footer -->
+          <footer>
+            <div>
+              Venini59 srl · Piazza A. Gramsci 2, 20154 Milano (MI) · P.IVA 10979860961
+            </div>
+            <div>
+              Contatti:
+              <a href="mailto:hello@venini59.com">hello@venini59.com</a>
+              ·
+              <a href="privacy.html">Privacy</a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
